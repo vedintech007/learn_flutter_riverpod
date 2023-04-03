@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_tutorials/example1/example1_homepage.dart';
+import 'package:riverpod_tutorials/example2/example2.dart';
 
 void main() {
   runApp(const ProviderScope(
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(),
-      home: const Example1HomePage(),
+      home: const Example2HomePage(),
     );
   }
 }
