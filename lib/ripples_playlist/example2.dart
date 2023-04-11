@@ -9,8 +9,12 @@ class Example2HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text("Provider content is name"),
+      body: Center(
+        child: Consumer(builder: (context, ref, child) {
+          final name = ref.watch(nameProvider);
+
+          return Text("Provider 2 content is $name");
+        }),
       ),
     );
   }
