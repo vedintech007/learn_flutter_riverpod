@@ -19,7 +19,7 @@ class Example1HomePage extends ConsumerWidget {
       body: Center(
         child: Text(
           date.toIso8601String(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 22,
           ),
         ),

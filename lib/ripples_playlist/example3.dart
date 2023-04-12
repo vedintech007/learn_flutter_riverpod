@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_tutorials/main.dart';
@@ -14,7 +15,9 @@ class _Example3HomePageState extends ConsumerState<Example3HomePage> {
   void initState() {
     final name = ref.read(nameProvider);
 
-    print(name);
+    if (kDebugMode) {
+      print(name);
+    }
 
     super.initState();
   }

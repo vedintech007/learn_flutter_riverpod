@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_tutorials/main.dart';
@@ -33,6 +35,8 @@ class _Example4HomePageState extends ConsumerState<Example4HomePage> {
             onPressed: () {
               // ref.invalidate(countProvider);
               final newValue = ref.refresh(countProvider);
+
+              log(newValue);
             },
             icon: const Icon(Icons.refresh),
           ),
