@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_tutorials/ripples_playlist/example5.dart';
+import 'package:riverpod_tutorials/ripples_playlist/example6/example6.dart';
 
 class RipplesHome extends StatelessWidget {
   const RipplesHome({super.key});
@@ -18,7 +18,7 @@ class RipplesHome extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(),
-      home: const Example5HomePage(),
+      home: const Example6HomePage(),
     );
   }
 }
