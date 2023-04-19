@@ -1,40 +1,44 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
+
+final userRepositoryProvider = Provider(
+  (ref) => UserRepository(),
+);
 
 @immutable
 class User {
   final String name;
-  final int age;
+  final String email;
 
   const User({
     required this.name,
-    required this.age,
+    required this.email,
   });
 
   User copyWith({
     String? name,
-    int? age,
+    String? email,
   }) {
     return User(
       name: name ?? this.name,
-      age: age ?? this.age,
+      email: email ?? this.email,
     );
   }
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'age': age,
+      'email': email,
     };
   }
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       name: map['name'] as String,
-      age: map['age'] as int,
+      email: map['email'] as String,
     );
   }
 
@@ -43,44 +47,25 @@ class User {
   factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'User(name: $name, age: $age)';
+  String toString() => 'User(name: $name, email: $email)';
 
   @override
   bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
 
-    return other.name == name && other.age == age;
+    return other.name == name && other.email == email;
   }
 
   @override
-  int get hashCode => name.hashCode ^ age.hashCode;
+  int get hashCode => name.hashCode ^ email.hashCode;
 }
 
-class UserNotifier extends StateNotifier<User> {
-  UserNotifier()
-      : super(
-          const User(name: '', age: 0),
-        ) {
-    updateName("initial name");
-  }
+class UserRepository {
+  Future<User> fetchUserData() {
+    final url = Uri.parse("https://jsonplaceholder.typicode.com/users/1");
 
-  void updateName(String n) {
-    state = state.copyWith(name: n);
-  }
-
-  void updateAge(int a) {
-    state = state.copyWith(age: a);
-  }
-}
-
-class UserNotifierChange extends ChangeNotifier {
-  User user = const User(age: 0, name: "");
-
-  void updateName(String n) {
-    user = user.copyWith(name: n);
-  }
-
-  void updateAge(int a) {
-    user = user.copyWith(age: a);
+    return http.get(url).then((value) {
+      return User.fromJson(value.body);
+    });
   }
 }
