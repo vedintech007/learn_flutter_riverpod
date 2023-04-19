@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_tutorials/main.dart';
+import 'package:riverpod_tutorials/old_main/main.dart';
 
 class Example3HomePage extends ConsumerStatefulWidget {
   const Example3HomePage({super.key});
