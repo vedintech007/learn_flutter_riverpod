@@ -61,8 +61,8 @@ class User {
 }
 
 class UserRepository {
-  Future<User> fetchUserData() {
-    final url = Uri.parse("https://jsonplaceholder.typicode.com/users/1");
+  Future<User> fetchUserData(String input) {
+    final url = Uri.parse("https://jsonplaceholder.typicode.com/users/$input");
 
     return http.get(url).then((value) {
       return User.fromJson(value.body);
