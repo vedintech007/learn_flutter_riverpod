@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_tutorials/rivan/user.dart';
+// part 'example1.g.dart';
 
 final fetchUserProvider = FutureProvider.family.autoDispose((ref, String input) {
   // ref.keepAlive();
@@ -14,6 +15,12 @@ final fetchUserProvider = FutureProvider.family.autoDispose((ref, String input) 
 final streamProvider = StreamProvider((ref) async* {
   yield [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 });
+
+// @riverpod
+// Future<User> fetchUser(FetchUserRef ref, String input) {
+//   final userRepository = ref.watch(userRepositoryProvider);
+//   return userRepository.fetchUserData(input);
+// }
 
 class Learn1 extends ConsumerStatefulWidget {
   const Learn1({super.key});
