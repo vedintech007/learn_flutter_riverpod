@@ -28,7 +28,6 @@ class Learn1 extends ConsumerWidget {
   }
 
   Widget _buildDataScreen(User data) {
-    print(data);
     return Scaffold(
       appBar: AppBar(
         title: Text(data.name),
